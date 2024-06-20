@@ -52,7 +52,6 @@ subprojects {
     java {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-        withSourcesJar()
     }
 
     fun adjustArchiveFileName(property: Property<String>) {
@@ -64,17 +63,21 @@ subprojects {
         adjustArchiveFileName(archiveFileName)
     }
 
-    //tasks.register("sourcesJar", Jar::class) {
-    //    archiveClassifier.set("sources")
-    //    adjustArchiveFileName(archiveFileName)
-//
-    //    from(sourceSets.main.get().allSource)
-    //}
+    tasks.register("sourcesJar", Jar::class) {
+        archiveClassifier.set("sources")
+        adjustArchiveFileName(archiveFileName)
+
+        from(sourceSets.main.get().allSource)
+    }
 
     var publishToken = System.getenv("PUBLISH_TOKEN")
 
     if (publishToken == null && project.hasProperty("net.labymod.distributor.publish-token")) {
         publishToken = project.property("net.labymod.distributor.publish-token").toString()
+    }
+
+    java {
+        withSourcesJar()
     }
 
     publishing {

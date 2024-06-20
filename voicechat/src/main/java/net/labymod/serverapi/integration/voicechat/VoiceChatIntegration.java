@@ -10,12 +10,13 @@ import net.labymod.serverapi.core.integration.LabyModProtocolIntegration;
 import net.labymod.serverapi.integration.voicechat.packets.VoiceChatMutePacket;
 import net.labymod.serverapi.integration.voicechat.packets.VoiceChatOpenChannelsPacket;
 import net.labymod.serverapi.integration.voicechat.packets.VoiceChatUnmutePacket;
+import org.jetbrains.annotations.NotNull;
 
 @AutoService(LabyModProtocolIntegration.class)
 public class VoiceChatIntegration implements LabyModProtocolIntegration {
 
-  private AbstractLabyModProtocolService protocolService;
   private AddonProtocol addonProtocol;
+  private AbstractLabyModProtocolService protocolService;
 
   @Override
   public void initialize(AbstractLabyModProtocolService protocolService) {
@@ -35,5 +36,13 @@ public class VoiceChatIntegration implements LabyModProtocolIntegration {
         this.addonProtocol,
         labyModPlayer.getUniqueId()
     );
+  }
+
+  public @NotNull AddonProtocol voiceChatProtocol() {
+    if (this.addonProtocol == null) {
+      throw new IllegalStateException("VoiceChatIntegration is not initialized");
+    }
+
+    return this.addonProtocol;
   }
 }

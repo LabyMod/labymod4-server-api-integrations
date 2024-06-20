@@ -24,4 +24,9 @@ public class VoiceChatOpenChannelsPacket implements Packet {
   public void write(@NotNull PayloadWriter writer) {
     // NO-OP
   }
+
+  @Override
+  public String toString() {
+    return "VoiceChatOpenChannelsPacket{}";
+  }
 }

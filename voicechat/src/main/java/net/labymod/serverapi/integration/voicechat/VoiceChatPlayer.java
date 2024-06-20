@@ -57,4 +57,12 @@ public class VoiceChatPlayer implements LabyModIntegrationPlayer {
   public boolean isMuted() {
     return this.mute != null;
   }
+
+  @Override
+  public String toString() {
+    return "VoiceChatPlayer{" +
+        "mute=" + this.mute +
+        ", uniqueId=" + this.uniqueId +
+        '}';
+  }
 }

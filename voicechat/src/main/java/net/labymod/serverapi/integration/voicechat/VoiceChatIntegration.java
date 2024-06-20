@@ -7,10 +7,14 @@ import net.labymod.serverapi.core.AbstractLabyModProtocolService;
 import net.labymod.serverapi.core.AddonProtocol;
 import net.labymod.serverapi.core.integration.LabyModIntegrationPlayer;
 import net.labymod.serverapi.core.integration.LabyModProtocolIntegration;
+import net.labymod.serverapi.integration.voicechat.model.VoiceChatMute;
 import net.labymod.serverapi.integration.voicechat.packets.VoiceChatMutePacket;
 import net.labymod.serverapi.integration.voicechat.packets.VoiceChatOpenChannelsPacket;
 import net.labymod.serverapi.integration.voicechat.packets.VoiceChatUnmutePacket;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @AutoService(LabyModProtocolIntegration.class)
 public class VoiceChatIntegration implements LabyModProtocolIntegration {
@@ -21,7 +25,6 @@ public class VoiceChatIntegration implements LabyModProtocolIntegration {
   @Override
   public void initialize(AbstractLabyModProtocolService protocolService) {
     this.protocolService = protocolService;
-    System.out.println("Initializing VoiceChatIntegration");
 
     this.addonProtocol = new AddonProtocol(protocolService, "voicechat");
     this.addonProtocol.registerPacket(0, VoiceChatMutePacket.class, Direction.CLIENTBOUND);
@@ -33,6 +36,18 @@ public class VoiceChatIntegration implements LabyModProtocolIntegration {
 
   @Override
   public LabyModIntegrationPlayer createIntegrationPlayer(AbstractLabyModPlayer<?> labyModPlayer) {
+    List<VoiceChatMute> mutes = new ArrayList<>();
+    for (AbstractLabyModPlayer<?> player : this.protocolService.getPlayers()) {
+      VoiceChatPlayer integrationPlayer = player.getIntegrationPlayer(VoiceChatPlayer.class);
+      if (integrationPlayer != null && integrationPlayer.isMuted()) {
+        mutes.add(integrationPlayer.getMute());
+      }
+    }
+
+    if (!mutes.isEmpty()) {
+      labyModPlayer.sendPacket(new VoiceChatMutePacket(mutes));
+    }
+
     return new VoiceChatPlayer(
         this.protocolService,
         this.addonProtocol,

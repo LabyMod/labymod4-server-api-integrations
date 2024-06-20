@@ -27,6 +27,8 @@ public class VoiceChatIntegration implements LabyModProtocolIntegration {
     this.addonProtocol.registerPacket(0, VoiceChatMutePacket.class, Direction.CLIENTBOUND);
     this.addonProtocol.registerPacket(1, VoiceChatUnmutePacket.class, Direction.CLIENTBOUND);
     this.addonProtocol.registerPacket(2, VoiceChatOpenChannelsPacket.class, Direction.CLIENTBOUND);
+
+    protocolService.registry().registerProtocol(this.addonProtocol);
   }
 
   @Override

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Create Issue for the LabyMod 4 Server API
+    url: https://github.com/LabyMod/labymod4-server-api/issues/new/choose
+    about: Issues on this repository are only for integrations of the LabyMod 4 Server API. For the LabyMod 4 Server API itself, please use the following link.
+  - name: Need Help?
+    url: https://labymod.net/dc/dev
+    about: Join our Discord server to ask for help regarding the LabyMod 4 Server API.
+  - name: LabyMod Developer Portal
+    url: https://wiki.labymod.net/
+    about: Check out our Developer Portal to understand the LabyMod 4 Server API better.

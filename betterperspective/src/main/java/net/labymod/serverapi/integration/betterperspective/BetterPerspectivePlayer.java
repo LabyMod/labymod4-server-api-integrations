@@ -40,6 +40,9 @@ public class BetterPerspectivePlayer implements LabyModIntegrationPlayer {
     this.uniqueId = uniqueId;
   }
 
+  /**
+   * Allows the player to use the unlock camera feature.
+   */
   public void allowUnlockCamera() {
     this.protocolService.labyModProtocol().sendPacket(
         this.uniqueId,
@@ -47,6 +50,9 @@ public class BetterPerspectivePlayer implements LabyModIntegrationPlayer {
     );
   }
 
+  /**
+   * Denies the player to use the unlock camera feature.
+   */
   public void denyUnlockCamera() {
     this.protocolService.labyModProtocol().sendPacket(
         this.uniqueId,

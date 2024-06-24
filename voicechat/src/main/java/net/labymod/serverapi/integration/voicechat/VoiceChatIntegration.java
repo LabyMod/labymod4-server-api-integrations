@@ -79,6 +79,9 @@ public class VoiceChatIntegration implements LabyModProtocolIntegration {
     );
   }
 
+  /**
+   * @return the voice chat protocol
+   */
   public @NotNull AddonProtocol voiceChatProtocol() {
     if (this.addonProtocol == null) {
       throw new IllegalStateException("VoiceChatIntegration is not initialized");

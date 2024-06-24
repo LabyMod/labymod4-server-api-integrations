@@ -55,6 +55,13 @@ public class VoiceChatPlayer implements LabyModIntegrationPlayer {
     this.uniqueId = uniqueId;
   }
 
+  /**
+   * Mutes the current player with the provided mute, also sends to mute packet to all other
+   * LabyMod players on the server. As long as not unmuted via {@link #unmute} this mute will also
+   * be sent to new LabyMod players joining the server
+   *
+   * @param mute the mute to apply
+   */
   public void mute(@NotNull VoiceChatMute mute) {
     Objects.requireNonNull(mute, "Mute can not be null. Use VoiceChatPlayer#unmute to unmute");
     this.mute = mute;
@@ -63,6 +70,10 @@ public class VoiceChatPlayer implements LabyModIntegrationPlayer {
     }
   }
 
+  /**
+   * Unmutes the current player, also sends the unmute packet to all other LabyMod players on the
+   * server
+   */
   public void unmute() {
     this.mute = null;
     for (AbstractLabyModPlayer<?> player : this.protocolService.getPlayers()) {
@@ -70,14 +81,23 @@ public class VoiceChatPlayer implements LabyModIntegrationPlayer {
     }
   }
 
+  /**
+   * Opens the voice chat channels screen for the current player
+   */
   public void openVoiceChatChannels() {
     this.addonProtocol.sendPacket(this.uniqueId, new VoiceChatOpenChannelsPacket());
   }
 
+  /**
+   * @return the mute of the player, null if the player is not muted (server-side)
+   */
   public @Nullable VoiceChatMute getMute() {
     return this.mute;
   }
 
+  /**
+   * @return whether the player is muted or not
+   */
   public boolean isMuted() {
     return this.mute != null;
   }

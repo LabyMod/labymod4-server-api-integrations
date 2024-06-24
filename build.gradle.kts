@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("maven-publish")
+    id("org.cadixdev.licenser") version ("0.6.1")
 }
 
 group = "net.labymod.serverapi.integration"
@@ -32,10 +33,16 @@ tasks.named("build") {
 subprojects {
     plugins.apply("java-library")
     plugins.apply("maven-publish")
+    plugins.apply("org.cadixdev.licenser")
 
     group = rootProject.group
     version = rootProject.version
 
+    license {
+        header(rootProject.file("LICENSE"))
+        newLine.set(true)
+        exclude("**/*.yml")
+    }
     repositories {
         mavenCentral()
         maven("https://dist.labymod.net/api/v1/maven/release/")
@@ -60,6 +67,7 @@ subprojects {
     }
 
     tasks.jar {
+        dependsOn("updateLicenses")
         adjustArchiveFileName(archiveFileName)
     }
 

@@ -28,6 +28,18 @@ body:
         - label: I have checked for Pull Requests that might already address this issue.
           required: true
   - type: dropdown
+    id: integrations
+    attributes:
+      label: "Affected Integration(s)"
+      description: What Integration(s) are you experiencing the problem with?
+      multiple: true
+      options:
+        - BetterPerspective
+        - VoiceChat
+        - Other (please specify in the additional information text field at the bottom)
+    validations:
+      required: true
+  - type: dropdown
     id: platform
     attributes:
       label: "Platforms"

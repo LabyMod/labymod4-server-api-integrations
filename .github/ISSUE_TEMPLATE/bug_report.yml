@@ -23,7 +23,7 @@ body:
           required: true
         - label: I am using the latest version of LabyMod.
           required: true
-        - label: I have checked for similar issues on the [Issue-tracker](https://github.com/LabyMod/labymod4-server-api/issues).
+        - label: I have checked for similar issues on the [Issue-tracker](https://github.com/LabyMod/labymod4-server-api-integrations/issues).
           required: true
         - label: I have checked for Pull Requests that might already address this issue.
           required: true

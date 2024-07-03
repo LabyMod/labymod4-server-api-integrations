@@ -17,7 +17,7 @@ Each Integration is a separate module:
 ## Usage
 
 An extensive guide on how to use the LabyMod 4 Server API can be found on
-the [LabyMod Developer Portal](https://wiki.labymod.net). Alternatively, feel free to ask for help on
+the [LabyMod Developer Portal](https://dev.labymod.net/pages/server/). Alternatively, feel free to ask for help on
 our [Discord Server for Developers](https://labymod.net/dc/dev).
 
 ## Building

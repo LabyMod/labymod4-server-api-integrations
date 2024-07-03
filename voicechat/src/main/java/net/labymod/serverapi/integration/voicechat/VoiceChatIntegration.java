@@ -48,6 +48,10 @@ public class VoiceChatIntegration implements LabyModProtocolIntegration {
 
   @Override
   public void initialize(AbstractLabyModProtocolService protocolService) {
+    if (this.protocolService != null) {
+      throw new IllegalStateException("VoiceChatIntegration is already initialized");
+    }
+
     this.protocolService = protocolService;
 
     this.addonProtocol = new AddonProtocol(protocolService, "voicechat");

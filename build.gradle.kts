@@ -45,13 +45,12 @@ subprojects {
     }
     repositories {
         mavenCentral()
-        maven("https://dist.labymod.net/api/v1/maven/release/")
         mavenLocal()
     }
 
     dependencies {
         compileOnly("org.jetbrains:annotations:22.0.0")
-        implementation("net.labymod.serverapi:core:0.1.9")
+        compileOnly("net.labymod.serverapi:core:0.1.12")
         compileOnly("com.google.auto.service:auto-service:1.1.1")
         annotationProcessor("com.google.auto.service:auto-service:1.1.1")
     }

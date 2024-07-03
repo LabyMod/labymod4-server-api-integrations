@@ -43,8 +43,10 @@ subprojects {
         newLine.set(true)
         exclude("**/*.yml")
     }
+
     repositories {
         mavenCentral()
+        maven("https://dist.labymod.net/api/v1/maven/release/")
         mavenLocal()
     }
 

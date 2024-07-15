@@ -24,7 +24,7 @@ our [Discord Server for Developers](https://labymod.net/dc/dev).
 
 ### Prerequisites
 
-- Java Development Kit (JDK) 17 or higher
+- Java Development Kit (JDK) 8 or higher
 
 ### Steps
 

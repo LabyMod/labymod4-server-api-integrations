@@ -99,10 +99,11 @@ public class VoiceChatMute {
       return true;
     }
 
-    if (!(o instanceof VoiceChatMute that)) {
+    if (!(o instanceof VoiceChatMute)) {
       return false;
     }
 
+    VoiceChatMute that = (VoiceChatMute) o;
     return this.end == that.end && Objects.equals(this.uniqueId, that.uniqueId)
         && Objects.equals(this.reason, that.reason);
   }

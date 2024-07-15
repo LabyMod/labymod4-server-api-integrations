@@ -52,14 +52,14 @@ subprojects {
 
     dependencies {
         compileOnly("org.jetbrains:annotations:22.0.0")
-        compileOnly("net.labymod.serverapi:core:0.1.12")
+        compileOnly("net.labymod.serverapi:core:0.1.13")
         compileOnly("com.google.auto.service:auto-service:1.1.1")
         annotationProcessor("com.google.auto.service:auto-service:1.1.1")
     }
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     fun adjustArchiveFileName(property: Property<String>) {

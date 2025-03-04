@@ -46,7 +46,7 @@ public class WaypointPacket implements Packet {
 
   public WaypointPacket(@NotNull ServerWaypoint... waypoints) {
     Objects.requireNonNull(waypoints, "Waypoints cannot be null");
-    this.waypoints = Collections.unmodifiableList(Collections.singletonList(waypoints));
+    this.waypoints = Collections.unmodifiableList(Arrays.asList(waypoints));
   }
 
   @Override

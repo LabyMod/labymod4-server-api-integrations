@@ -52,7 +52,7 @@ subprojects {
 
     dependencies {
         compileOnly("org.jetbrains:annotations:22.0.0")
-        compileOnly("net.labymod.serverapi:core:0.1.13")
+        compileOnly("net.labymod.serverapi:core:1.0.6")
         compileOnly("com.google.auto.service:auto-service:1.1.1")
         annotationProcessor("com.google.auto.service:auto-service:1.1.1")
     }
